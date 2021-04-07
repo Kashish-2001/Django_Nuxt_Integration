@@ -1,3 +1,4 @@
+<script src="../../store/post.js"></script>
 <template>
   <div>
     <article>
@@ -10,20 +11,21 @@
       <ul>
         <li v-for="related in relatedPost" :key="related.id">
           <nuxt-link :to="{ name: 'post-id', params: {id:related.id}}">
-            {{related.title}}
+            {{ related.title }}
           </nuxt-link>
         </li>
       </ul>
-
     </aside>
 
   </div>
-  </template>
+
+</template>
+
 
 <script>
 export default {
   name: "id",
-  data(){
+  data() {
     return {
       id: this.$route.params.id,
     }
@@ -37,56 +39,79 @@ export default {
       ]
     }
   },
+  mounted() {
+    this.$store.dispatch('post/getPosts')
+  },
   computed: {
-    post (){
-       return this.$store.state.post.all.find(post => post.id === this.id)
-    },
-    relatedPost (){
-      return this.$store.state.post.all.filter(post => post.id !==this.id)
+    post() {
+      let pre_post = {};
+      if(this.$store.state.post.posts.length !== 0){
+        this.$store.state.post.posts.find(post => {
+          if(post.id == this.id){
+            pre_post = post
+          }
+        })
+      }
+      return pre_post
+      },
+
+    relatedPost() {
+      let related_post = []
+      if (this.$store.state.post.posts.length !== 0) {
+          this.$store.state.post.posts.filter(post => {
+            if(post.id != this.id){
+              related_post.push(post)
+            }
+        })
+      }
+      return related_post
     }
   }
 }
 </script>
 
+
 <style scoped>
 
-article{
+article {
   margin: 20px;
   display: flex;
   min-width: 100vh;
-  flex-direction:row;
+  flex-direction: row;
   position: absolute;
   top: 200px;
   left: 215px;
 }
 
-article h1{
+article h1 {
   position: absolute;
   top: 0px;
   color: #d49d42;
 }
 
-article p{
+article p {
   position: absolute;
   top: 30px;
   margin-top: 30px;
   color: #dddddd;
 }
 
-aside{
+aside {
   position: absolute;
   top: 250px;
   right: 220px;
 }
 
-aside h2{
+aside h2 {
   color: #d49d42;
 }
-aside li{
+
+aside li {
   margin-top: 10px;
   color: #ccc;
 }
-a{
+
+a {
   color: #387c6d;
 }
 </style>

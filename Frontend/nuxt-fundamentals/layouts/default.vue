@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar/>
-    <Nuxt />
+    <Nuxt/>
   </div>
 </template>
 
@@ -17,22 +17,19 @@ export default {
 </script>
 
 
-
-
 <style>
 html {
 
   min-height: 80vh;
   background: #1b2021;
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: 'Source Sans Pro',
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  Roboto,
+  'Helvetica Neue',
+  Arial,
+  sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -42,10 +39,11 @@ html {
   box-sizing: border-box;
 }
 
-a{
+a {
   text-decoration: none;
- }
-a:hover{
+}
+
+a:hover {
   opacity: 0.5;
 }
 

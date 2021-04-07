@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-.container{
+.container {
   margin: 0 auto;
   min-height: 80vh;
   display: flex;
@@ -28,7 +28,8 @@ export default {
   align-items: center;
   justify-content: center;
 }
-h1{
+
+h1 {
   color: cornsilk;
 }
 </style>
